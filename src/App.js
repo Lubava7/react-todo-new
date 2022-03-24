@@ -1,11 +1,12 @@
 import "./App.css";
-import Input from "./components/Input/Input";
+
+import Todo from "./components/Todo/Todo";
 
 function App() {
   return (
     <div className="Todo">
       <div>
-        <Input />
+        <Todo />
       </div>
     </div>
   );
