@@ -34,15 +34,19 @@ function App() {
   return (
     <div className="Todo">
       <h3>Список дел: {counter} </h3>
+
       <TodoForm addTask={addTask} />
       {todos.map((todo) => {
         return (
-          <Todo
-            todo={todo}
-            key={todo.id}
-            toggleTask={handleToggle}
-            removeTask={removeTask}
-          />
+          <div>
+            <input type="checkbox" />
+            <Todo
+              todo={todo}
+              key={todo.id}
+              toggleTask={handleToggle}
+              removeTask={removeTask}
+            />
+          </div>
         );
       })}
     </div>
