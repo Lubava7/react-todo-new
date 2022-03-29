@@ -45,12 +45,12 @@ function PageDashboard(toggleTask) {
               className={todo.complete ? "item-text strike" : "item-text"}
             >
               {todo.task}
-            </div>
-            <div>
-              <input type="checkbox" onClick={handleToggle} />
-            </div>
-            <div className="item-delete" onClick={() => removeTask(todo.id)}>
-              &times;
+              <div>
+                <input type="checkbox" onClick={handleToggle} />
+              </div>
+              <div className="item-delete" onClick={() => removeTask(todo.id)}>
+                &times;
+              </div>
             </div>
           </div>
         );

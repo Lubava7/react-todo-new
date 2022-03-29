@@ -1,3 +1,7 @@
 .item-delete {
   cursor: pointer;
 }
+.item-text {
+  border: 2px solid red;
+  display: flex;
+}
