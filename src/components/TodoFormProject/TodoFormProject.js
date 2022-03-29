@@ -35,7 +35,3 @@ function TodoFormProject({ addTask }) {
   );
 }
 export default TodoFormProject;
-
-/* <button type="submit" onClick={addTask}>
-          <BsPlusSquareDotted />
-        </button> */

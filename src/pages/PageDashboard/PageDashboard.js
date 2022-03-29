@@ -1,10 +1,10 @@
 import React from "react";
-// import "./PageDashboard.css";
+import "./PageDashboard.css";
 
 import TodoForm from "../../components/TodoForm/TodoForm";
-import Todo from "../../components/Todo/Todo";
+// import Todo from "../../components/Todo/Todo";
 
-function PageDashboard() {
+function PageDashboard(toggleTask) {
   const [todos, setTodos] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
 
@@ -40,13 +40,18 @@ function PageDashboard() {
       {todos.map((todo) => {
         return (
           <div>
-            <input type="checkbox" />
-            <Todo
-              todo={todo}
-              key={todo.id}
-              toggleTask={handleToggle}
-              removeTask={removeTask}
-            />
+            <div
+              onClick={() => toggleTask(todo.id)}
+              className={todo.complete ? "item-text strike" : "item-text"}
+            >
+              {todo.task}
+            </div>
+            <div>
+              <input type="checkbox" onClick={handleToggle} />
+            </div>
+            <div className="item-delete" onClick={() => removeTask(todo.id)}>
+              &times;
+            </div>
           </div>
         );
       })}

@@ -1,10 +1,10 @@
 import React from "react";
-// import "./PageDashboard.css";
-
+import "./PageProject.css";
+import Addprojectbutton from "../../components/Addprojectbutton/Addprojectbutton";
 import TodoFormProject from "../../components/TodoFormProject/TodoFormProject";
-import TodoProject from "../../components/TodoProject/TodoProject";
+// import TodoProject from "../../components/TodoProject/TodoProject";
 
-function PageProject() {
+function PageProject(toggleTask) {
   const [todos, setTodos] = React.useState([]);
   const [counter, setCounter] = React.useState(0);
 
@@ -35,18 +35,24 @@ function PageProject() {
   return (
     <div className="Todo">
       <h3>Список дел: {counter} </h3>
+      <Addprojectbutton />
 
       <TodoFormProject addTask={addTask} />
       {todos.map((todo) => {
         return (
           <div>
-            <input type="checkbox" />
-            <TodoProject
-              todo={todo}
-              key={todo.id}
-              toggleTask={handleToggle}
-              removeTask={removeTask}
-            />
+            <div
+              onClick={() => toggleTask(todo.id)}
+              className={todo.complete ? "item-text strike" : "item-text"}
+            >
+              {todo.task}
+            </div>
+            <div>
+              <input type="checkbox" onClick={handleToggle} />
+            </div>
+            <div className="item-delete" onClick={() => removeTask(todo.id)}>
+              &times;
+            </div>
           </div>
         );
       })}
