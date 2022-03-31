@@ -1,17 +1,15 @@
 import React from "react";
-// import "./TodoForm.css";
-import { BsPlusSquareDotted } from "react-icons/bs";
 
-function TodoFormProject({ addTask }) {
-  const [text, setText] = React.useState("");
+function Formprojectbutton() {
+  const [projectName, setProjectName] = React.useState("");
 
   function handleChange(e) {
-    setText(e.target.value);
+    setProjectName(e.target.value);
   }
   function handleSubmit(e) {
     e.preventDefault();
-    addTask(text);
-    setText("");
+    addProject(projectName);
+    setProjectName("");
   }
   function handleKeyPress(e) {
     if (e.key === "Enter") {
@@ -22,7 +20,7 @@ function TodoFormProject({ addTask }) {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        value={text}
+        value={projectName}
         type="text"
         onChange={handleChange}
         onKeyDown={handleKeyPress}
@@ -34,4 +32,5 @@ function TodoFormProject({ addTask }) {
     </form>
   );
 }
-export default TodoFormProject;
+
+export default Formprojectbutton;

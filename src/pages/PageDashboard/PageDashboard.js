@@ -1,8 +1,8 @@
 import React from "react";
 import "./PageDashboard.css";
-
+import DeleteIcon from "@mui/icons-material/Delete";
+import CheckIcon from "@mui/icons-material/Check";
 import TodoForm from "../../components/TodoForm/TodoForm";
-// import Todo from "../../components/Todo/Todo";
 
 function PageDashboard(toggleTask) {
   const [todos, setTodos] = React.useState([]);
@@ -45,11 +45,17 @@ function PageDashboard(toggleTask) {
               className={todo.complete ? "item-text strike" : "item-text"}
             >
               {todo.task}
-              <div>
-                <input type="checkbox" onClick={handleToggle} />
-              </div>
-              <div className="item-delete" onClick={() => removeTask(todo.id)}>
-                &times;
+              <div className="trash-check">
+                <div>
+                  {/* <input type="checkbox" onClick={handleToggle} /> */}
+                  <CheckIcon onClick={handleToggle} className="checkIcon" />
+                </div>
+                <div
+                  className="item-delete"
+                  onClick={() => removeTask(todo.id)}
+                >
+                  <DeleteIcon />
+                </div>
               </div>
             </div>
           </div>

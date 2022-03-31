@@ -9,13 +9,13 @@ import ActiveLastBreadcrumb from "./components/Header/Header";
 function App() {
   return (
     <div className="all-div">
-      <div className="left-div">
+      {/* <div className="left-div">
         <ActiveLastBreadcrumb />
         <Routes>
           <Route path="/" element={<PageDashboard />} />
           <Route path="/project" element={<PageProject />} />
         </Routes>
-      </div>
+      </div> */}
       <div className="right-div">
         <ActiveLastBreadcrumb />
         <Routes>
