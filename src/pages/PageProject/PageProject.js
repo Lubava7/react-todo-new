@@ -92,9 +92,6 @@ function PageProject(toggleTask) {
                     >
                       {project.task}
                       <div className="trash-check-add">
-                        <div className="plusdotten">
-                          <AddIcon onClick={() => setIsOpen(true)} />
-                        </div>
                         <div>
                           <CheckIcon
                             onClick={handleToggle}
