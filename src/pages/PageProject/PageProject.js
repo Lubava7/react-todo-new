@@ -42,10 +42,16 @@ function PageProject(toggleTask) {
   function removeTask(id) {
     setTodos([...todos.filter((todo) => todo.id !== id)]);
     setCounter(todos.length - 1);
+    setProjects([...projects.filter((project) => project.id !== id)]);
   }
   function handleToggle(id) {
     setTodos([
       ...todos.map((task) =>
+        task.id === id ? { ...task, complete: !task.comlete } : { ...task }
+      ),
+    ]);
+    setProjects([
+      ...projects.map((task) =>
         task.id === id ? { ...task, complete: !task.comlete } : { ...task }
       ),
     ]);
