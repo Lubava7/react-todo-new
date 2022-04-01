@@ -4,11 +4,25 @@ import TodoFormProject from "../../components/TodoFormProject/TodoFormProject";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CheckIcon from "@mui/icons-material/Check";
 import AddIcon from "@mui/icons-material/Add";
+import AddProj from "../../components/AddProj/AddProj";
 
 function PageProject(toggleTask) {
   const [projects, setProjects] = React.useState([]);
-
   const [counter, setCounter] = React.useState(0);
+  const [todos, setTodos] = React.useState([]);
+
+  function addProj(text) {
+    if (text) {
+      const newTask = {
+        id: Math.random().toString(36).substring(2, 9),
+        task: text,
+        complete: false,
+      };
+      setTodos([...todos, newTask]);
+
+      console.log(todos, newTask);
+    }
+  }
 
   function addTask(text) {
     if (text) {
@@ -18,11 +32,11 @@ function PageProject(toggleTask) {
         complete: false,
       };
       setProjects([...projects, newItem]);
-
       setCounter(projects.length + 1);
       console.log(projects, newItem);
     }
   }
+
   function removeTask(id) {
     setProjects([...projects.filter((project) => project.id !== id)]);
     setCounter(projects.length - 1);
@@ -49,7 +63,6 @@ function PageProject(toggleTask) {
               className={project.complete ? "item-text strike" : "item-text"}
             >
               {project.task}
-
               <div className="trash-check-add">
                 <div className="plusdotten">
                   <AddIcon />
@@ -63,6 +76,7 @@ function PageProject(toggleTask) {
                 >
                   <DeleteIcon />
                 </div>
+                <AddProj addProj={addProj} />
               </div>
             </div>
           </div>
