@@ -1,25 +1,27 @@
 import React from "react";
 import { BsPlusSquareDotted } from "react-icons/bs";
 // import AddIcon from '@mui/icons-material/Add';
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import CheckIcon from "@mui/icons-material/Check";
 
 function Addprojectbutton({ open, addProjectTask }) {
   const [proj, setProj] = React.useState("");
+  // const [projects, setProjects] = React.useState([]);
 
-  // const [todos, setTodos] = React.useState([]);
-
-  // function addProjectTask() {
-  //   if (text) {
-  //     const newItem = {
+  // function addProjectTask(proj) {
+  //   if (proj) {
+  //     const newProj = {
   //       id: Math.random().toString(36).substring(2, 9),
-  //       task: text,
+  //       task: proj,
   //       complete: false,
   //       // isOpen: true,
   //     };
-  //     setTodos([...todos, newItem]);
+  //     setProjects([...projects, newProj]);
 
-  //     console.log(todos, newItem);
+  //     console.log(projects, newProj);
   //   }
   // }
+
   function handleChangeP(e) {
     setProj(e.target.value);
   }
@@ -49,6 +51,31 @@ function Addprojectbutton({ open, addProjectTask }) {
           <BsPlusSquareDotted />
         </button>
       </form>
+      {/* <div>
+        {projects.map((project) => {
+          return (
+            <div className="todoproj">
+              <div
+                onClick={() => toggleTask(project.id)}
+                className={project.complete ? "item-text strike" : "item-proj"}
+              >
+                {project.task}
+                <div className="trash-check-add">
+                  <div>
+                    <CheckIcon onClick={handleToggle} className="checkIcon" />
+                  </div>
+                  <div
+                    className="item-delete"
+                    onClick={() => removeTask(project.id)}
+                  >
+                    <DeleteIcon />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div> */}
     </div>
   );
 }

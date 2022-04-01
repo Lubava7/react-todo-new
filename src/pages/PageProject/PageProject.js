@@ -22,7 +22,6 @@ function PageProject(toggleTask) {
         // isOpen: true,
       };
       setProjects([...projects, newProj]);
-
       console.log(projects, newProj);
     }
   }
@@ -87,38 +86,35 @@ function PageProject(toggleTask) {
             </div>
             <div>
               <Addprojectbutton open={isOpen} addProjectTask={addProjectTask} />
-              {projects.map((project) => {
-                return (
-                  <div className="todoproj">
-                    <div
-                      onClick={() => toggleTask(project.id)}
-                      className={
-                        project.complete ? "item-text strike" : "item-proj"
-                      }
-                    >
-                      {project.task}
-                      <div className="trash-check-add">
-                        <div>
-                          <CheckIcon
-                            onClick={handleToggle}
-                            className="checkIcon"
-                          />
-                        </div>
-                        <div
-                          className="item-delete"
-                          onClick={() => removeTask(project.id)}
-                        >
-                          <DeleteIcon />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </div>
         );
       })}
+      <div className="project-tasks">
+        {projects.map((project) => {
+          return (
+            <div className="todoproj">
+              <div
+                onClick={() => toggleTask(project.id)}
+                className={project.complete ? "item-text strike" : "item-proj"}
+              >
+                {project.task}
+                <div className="trash-check-add">
+                  <div>
+                    <CheckIcon onClick={handleToggle} className="checkIcon" />
+                  </div>
+                  <div
+                    className="item-delete"
+                    onClick={() => removeTask(project.id)}
+                  >
+                    <DeleteIcon />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
