@@ -6,9 +6,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import AddIcon from "@mui/icons-material/Add";
 
 function PageProject(toggleTask) {
-  const [todos, setTodos] = React.useState([]);
+  const [projects, setProjects] = React.useState([]);
+
   const [counter, setCounter] = React.useState(0);
-  const [isOpen, setIsOpen] = React.useState(false);
 
   function addTask(text) {
     if (text) {
@@ -17,18 +17,19 @@ function PageProject(toggleTask) {
         task: text,
         complete: false,
       };
-      setTodos([...todos, newItem]);
-      setCounter(todos.length + 1);
-      console.log(todos, newItem);
+      setProjects([...projects, newItem]);
+
+      setCounter(projects.length + 1);
+      console.log(projects, newItem);
     }
   }
   function removeTask(id) {
-    setTodos([...todos.filter((todo) => todo.id !== id)]);
-    setCounter(todos.length - 1);
+    setProjects([...projects.filter((project) => project.id !== id)]);
+    setCounter(projects.length - 1);
   }
   function handleToggle(id) {
-    setTodos([
-      ...todos.map((task) =>
+    setProjects([
+      ...projects.map((task) =>
         task.id === id ? { ...task, complete: !task.comlete } : { ...task }
       ),
     ]);
@@ -40,25 +41,25 @@ function PageProject(toggleTask) {
       <h4>Введите название проекта:</h4>
       <TodoFormProject addTask={addTask} />
 
-      {todos.map((todo) => {
+      {projects.map((project) => {
         return (
           <div>
             <div
-              onClick={() => toggleTask(todo.id)}
-              className={todo.complete ? "item-text strike" : "item-text"}
+              onClick={() => toggleTask(project.id)}
+              className={project.complete ? "item-text strike" : "item-text"}
             >
-              {todo.task}
+              {project.task}
 
               <div className="trash-check-add">
                 <div className="plusdotten">
-                  <AddIcon onClick={() => setIsOpen(true)} />
+                  <AddIcon />
                 </div>
                 <div>
                   <CheckIcon onClick={handleToggle} className="checkIcon" />
                 </div>
                 <div
                   className="item-delete"
-                  onClick={() => removeTask(todo.id)}
+                  onClick={() => removeTask(project.id)}
                 >
                   <DeleteIcon />
                 </div>
