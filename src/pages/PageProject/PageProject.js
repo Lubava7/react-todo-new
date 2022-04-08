@@ -52,7 +52,7 @@ function PageProject(toggleTask) {
               {project.task}
               <div className="trash-check-add">
                 <div className="plusdotten">
-                  <AddIcon addProj={addProj} />
+                  <AddIcon />
                 </div>
                 <div>
                   <CheckIcon onClick={handleToggle} className="checkIcon" />
