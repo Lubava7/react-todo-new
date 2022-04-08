@@ -25,7 +25,7 @@ function AddProj({ addProj }) {
         type="text"
         onChange={handleChange}
         onKeyDown={handleKeyPress}
-        placeholder="What project name?"
+        placeholder="write the task"
       />
       <button>
         <BsPlusSquareDotted />
