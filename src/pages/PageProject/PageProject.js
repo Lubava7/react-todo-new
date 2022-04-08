@@ -1,10 +1,8 @@
 import React from "react";
 import "./PageProject.css";
-import TodoFormProject from "../../components/TodoFormProject/TodoFormProject";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CheckIcon from "@mui/icons-material/Check";
+// import CheckIcon from "@mui/icons-material/Check";
 import AddIcon from "@mui/icons-material/Add";
-// import AddProj from "../../components/AddProj/AddProj";
 
 function PageProject(toggleTask) {
   const [projects, setProjects] = React.useState([]);
@@ -27,20 +25,26 @@ function PageProject(toggleTask) {
   function removeTask(id) {
     setProjects([...projects.filter((project) => project.id !== id)]);
     setCounter(projects.length - 1);
+    setTodos([...todos.filter((todo) => todo.id !== id)]);
   }
-  function handleToggle(id) {
-    setProjects([
-      ...projects.map((task) =>
-        task.id === id ? { ...task, complete: !task.comlete } : { ...task }
-      ),
-    ]);
-  }
+  // function handleToggle(id) {
+  //   setProjects([
+  //     ...projects.map((task) =>
+  //       task.id === id ? { ...task, complete: !task.comlete } : { ...task }
+  //     ),
+  //   ]);
+  //   setTodos([
+  //     ...todos.map((task) =>
+  //       task.id === id ? { ...task, complete: !task.comlete } : { ...task }
+  //     ),
+  //   ]);
+  // }
 
   return (
     <div className="Todo">
       <h3>Новые проекты: {counter} </h3>
-      <h4>Введите название проекта:</h4>
-      <TodoFormProject addTask={addTask} />
+      {/* <h4>Введите название проекта:</h4> */}
+      {/* <TodoFormProject addTask={addTask} /> */}
 
       {projects.map((project) => {
         return (
@@ -52,18 +56,17 @@ function PageProject(toggleTask) {
               {project.task}
               <div className="trash-check-add">
                 <div className="plusdotten">
-                  <AddIcon />
+                  <AddIcon onClick={addTodos} />
                 </div>
-                <div>
+                {/* <div>
                   <CheckIcon onClick={handleToggle} className="checkIcon" />
-                </div>
+                </div> */}
                 <div
                   className="item-delete"
                   onClick={() => removeTask(project.id)}
                 >
                   <DeleteIcon />
                 </div>
-                {/* <AddProj addProj={addProj} /> */}
               </div>
             </div>
           </div>
