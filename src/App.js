@@ -6,8 +6,10 @@ import AddIcon from "@mui/icons-material/Add";
 function App(toggleTask) {
   const [projects, setProjects] = React.useState([]);
   const [text, setText] = React.useState("");
-  // const [todos, setTodos] = React.useState([]);
+  const [todos, setTodos] = React.useState([]);
   const [counter, setCounter] = React.useState([]);
+
+  function addTask() {}
 
   function addProjects(text) {
     if (text) {
@@ -40,45 +42,53 @@ function App(toggleTask) {
   }
 
   return (
-    <div className="TodoList">
-      <div>Add a new Project:</div>
-      <div>Amount of projects : {counter}</div>
+    <div className="div-project-todos">
+      <div className="TodoList">
+        <div>Add a new Project:</div>
+        <div>Amount of projects : {counter}</div>
 
-      <button className="button-add-icon">
-        <AddIcon
-          style={{ fontSize: "small" }}
-          onClick={() => addProjects(text)}
-        />
-        <input
-          className="input"
-          value={text}
-          type="text"
-          onChange={handleChange}
-          onKeyDown={handleKeyPress}
-          placeholder="create a project"
-        />
-      </button>
+        <button className="button-add-icon">
+          <AddIcon
+            style={{ fontSize: "small" }}
+            onClick={() => addProjects(text)}
+          />
+          <input
+            className="input"
+            value={text}
+            type="text"
+            onChange={handleChange}
+            onKeyDown={handleKeyPress}
+            placeholder="create a project"
+          />
+        </button>
 
-      {projects.map((project) => {
-        return (
-          <div>
-            <div
-              onClick={() => toggleTask(project.id)}
-              className={project.complete ? "item-text strike" : "item-text"}
-            >
-              {project.name}
-              <div className="trash-check">
+        {projects.map((project) => {
+          return (
+            <div>
+              <div className="project-map" onClick={addTask}>
                 <div
-                  className="item-delete"
-                  onClick={() => removeTask(project.id)}
+                  onClick={() => toggleTask(project.id)}
+                  className="item-text"
                 >
-                  <DeleteIcon />
+                  {project.name}
+
+                  <div className="trash-check">
+                    <div
+                      className="item-delete"
+                      // onClick={() => removeTask(project.id)}
+                    >
+                      <DeleteIcon onClick={() => removeTask(project.id)} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+      <div className="todos-map">
+        <p>hello</p>
+      </div>
     </div>
   );
 }
