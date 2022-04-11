@@ -66,3 +66,7 @@ html {
   flex-direction: row;
   justify-content: space-around;
 }
+.current-name {
+  height: 100px;
+  width: 300px;
+}

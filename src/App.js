@@ -8,8 +8,11 @@ function App(toggleTask) {
   const [text, setText] = React.useState("");
   const [todos, setTodos] = React.useState([]);
   const [counter, setCounter] = React.useState([]);
+  const [currentProject, setCurrentProject] = React.useState({});
 
-  function addTask() {}
+  function selectProject(project) {
+    setCurrentProject(project);
+  }
 
   function addProjects(text) {
     if (text) {
@@ -21,6 +24,7 @@ function App(toggleTask) {
       setProjects([...projects, newProject]);
       console.log(projects, newProject);
       setCounter(projects.length + 1);
+      setCurrentProject(newProject);
     }
   }
   function handleChange(e) {
@@ -65,7 +69,10 @@ function App(toggleTask) {
         {projects.map((project) => {
           return (
             <div>
-              <div className="project-map" onClick={addTask}>
+              <div
+                className="project-map"
+                onClick={() => selectProject(project)}
+              >
                 <div
                   onClick={() => toggleTask(project.id)}
                   className="item-text"
@@ -73,10 +80,7 @@ function App(toggleTask) {
                   {project.name}
 
                   <div className="trash-check">
-                    <div
-                      className="item-delete"
-                      // onClick={() => removeTask(project.id)}
-                    >
+                    <div className="item-delete">
                       <DeleteIcon onClick={() => removeTask(project.id)} />
                     </div>
                   </div>
@@ -87,7 +91,23 @@ function App(toggleTask) {
         })}
       </div>
       <div className="todos-map">
-        <p>hello</p>
+        <div className="current-name">{currentProject.name}</div>
+        <div>
+          <button className="button-add-icon">
+            <AddIcon
+              style={{ fontSize: "small" }}
+              // onClick={() => addProjects(text)}
+            />
+            <input
+              className="input"
+              // value={text}
+              type="text"
+              // onChange={handleChange}
+              // onKeyDown={handleKeyPress}
+              placeholder="add a task"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
