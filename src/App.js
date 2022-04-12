@@ -3,11 +3,13 @@ import "./App.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 
+function randomId() {
+  return Math.random().toString(36).substring(2, 9);
+}
 function App(toggleTask) {
   const [projects, setProjects] = React.useState([]);
   const [text, setText] = React.useState("");
   const [word, setWord] = React.useState("");
-  const [todos, setTodos] = React.useState([]);
   const [counter, setCounter] = React.useState([]);
   const [currentProject, setCurrentProject] = React.useState({});
 
@@ -16,20 +18,24 @@ function App(toggleTask) {
   }
   function addTask(word) {
     if (word) {
+      const newProject = { ...currentProject };
       const newTask = {
-        id: Math.random().toString(36).substring(2, 9),
+        id: randomId(),
         task: word,
       };
-      setTodos([...todos, newTask]);
+
+      newProject.tasks.push(newTask);
+      setCurrentProject(newProject);
     }
   }
 
   function addProjects(text) {
     if (text) {
       const newProject = {
-        id: Math.random().toString(36).substring(2, 9),
+        id: randomId(),
         name: text,
-        // complete: false,
+        tasks: [],
+        complete: false,
       };
       setProjects([...projects, newProject]);
       console.log(projects, newProject);
@@ -65,7 +71,6 @@ function App(toggleTask) {
   }
   function removeTask(id) {
     setProjects([...projects.filter((project) => project.id !== id)]);
-    setTodos([...todos.filter((todo) => todo.id !== id)]);
     setCounter(projects.length - 1);
   }
 
@@ -131,19 +136,19 @@ function App(toggleTask) {
               placeholder="add a task"
             />
           </button>
-          {todos.map((todo, currentProject) => {
+          {currentProject.tasks.map((task) => {
             return (
               <div>
                 <div className="todos-map-div">
                   <div
-                    onClick={() => toggleTask(todo.id)}
+                    onClick={() => toggleTask(task.id)}
                     className="item-text"
                   >
-                    {todo.task}
+                    {task.task}
 
                     <div className="trash-check">
                       <div className="item-delete">
-                        <DeleteIcon onClick={() => removeTask(todo.id)} />
+                        <DeleteIcon onClick={() => removeTask(task.id)} />
                       </div>
                     </div>
                   </div>
