@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from "@mui/icons-material/Add";
+import { FaTrashAlt } from "react-icons/fa";
 
 function randomId() {
   return Math.random().toString(36).substring(2, 9);
@@ -76,7 +75,7 @@ function App(toggleTask) {
   }
   function removeTask(id) {
     setProjects([...projects.filter((project) => project.id !== id)]);
-    setCurrentProject({});
+    setCurrentProject(null);
     setCounter(projects.length - 1);
   }
   function removeTaskTodo(jop) {
@@ -100,23 +99,23 @@ function App(toggleTask) {
   return (
     <div className="div-project-todos">
       <div className="TodoList">
-        <div>Add a new Project:</div>
-        <div>Amount of projects : {counter}</div>
+        <div className="counter">Amount of projects : {counter}</div>
+        <div className="div-under-counter">Add a new Project:</div>
 
-        <button className="button-add-icon">
-          <AddIcon
+        {/* <button className="button-add-icon"> */}
+        {/* <AddIcon
             style={{ fontSize: "small" }}
             onClick={() => addProjects(text)}
-          />
-          <input
-            className="input"
-            value={text}
-            type="text"
-            onChange={handleChange}
-            onKeyDown={handleKeyPress}
-            placeholder="create a project"
-          />
-        </button>
+          /> */}
+        <input
+          className="input"
+          value={text}
+          type="text"
+          onChange={handleChange}
+          onKeyDown={handleKeyPress}
+          placeholder="create a project"
+        />
+        {/* </button> */}
 
         {projects.map((project) => {
           return (
@@ -133,7 +132,7 @@ function App(toggleTask) {
 
                   <div className="trash-check">
                     <div className="item-delete">
-                      <DeleteIcon onClick={() => removeTask(project.id)} />
+                      <FaTrashAlt onClick={() => removeTask(project.id)} />
                     </div>
                   </div>
                 </div>
@@ -146,20 +145,20 @@ function App(toggleTask) {
         <div className="todos-map">
           <div className="current-name">{currentProject.name}</div>
           <div>
-            <button className="button-add-icon">
-              <AddIcon
+            {/* <button className="button-add-icon-todos"> */}
+            {/* <AddIcon
                 style={{ fontSize: "small" }}
                 onClick={() => addTask(word)}
-              />
-              <input
-                className="input"
-                value={word}
-                type="text"
-                onChange={handleChangeTodos}
-                onKeyDown={handleKeyPressTodos}
-                placeholder="add a task"
-              />
-            </button>
+              /> */}
+            <input
+              className="input-todos"
+              value={word}
+              type="text"
+              onChange={handleChangeTodos}
+              onKeyDown={handleKeyPressTodos}
+              placeholder="add a task"
+            />
+            {/* </button> */}
 
             {currentProject.tasks &&
               currentProject.tasks.map((task) => {
@@ -174,7 +173,7 @@ function App(toggleTask) {
 
                         <div className="trash-check">
                           <div className="item-delete">
-                            <DeleteIcon
+                            <FaTrashAlt
                               onClick={() => removeTaskTodo(task.id)}
                             />
                           </div>

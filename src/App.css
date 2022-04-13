@@ -1,21 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Mohave:wght@300&family=Rubik+Wet+Paint&family=Source+Sans+Pro:wght@200&display=swap");
+
 html {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 0, 0);
-  font-weight: bold;
+  height: 100vh;
+}
+body {
+  min-height: 100vh;
+  font-family: "Source Sans Pro", sans-serif;
 }
 .TodoList {
-  border: 2px solid grey;
-  width: 48%;
+  border-right: 2px solid grey;
+  width: 40%;
+  height: 100vh;
+}
+.div-project-todos {
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .item-text {
-  border-top: 3px solid rgb(116, 116, 116);
+  border: 1px solid grey;
   display: flex;
   width: 100%;
   height: 100%;
+  word-break: break-all;
+  margin-top: 10px;
 }
 .trash-check {
+  border: 1px solid grey;
   display: flex;
   width: 100%;
   height: 100%;
@@ -23,50 +37,60 @@ html {
   text-align: end;
   align-items: flex-end;
 }
-.button-add-icon {
-  background-color: white;
-  border: 2px solid rgb(99, 99, 99);
-  border-radius: 20px;
-  cursor: pointer;
-  background-color: rgb(255, 0, 0);
+.counter {
+  border: 1px solid grey;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.div-under-counter {
+  border: 1px solid grey;
+  margin-bottom: 10px;
 }
 .input {
-  border: none;
   border-radius: 20px;
-  outline: none;
-  margin-left: 5px;
-  background-color: rgb(255, 0, 0);
-  color: white;
+  text-align: center;
+  cursor: pointer;
+  width: 140px;
+}
+.input-todos {
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  width: 140px;
 }
 .project-map {
+  border: 1px solid grey;
   cursor: pointer;
   height: 100%;
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
 }
 .item-delete {
+  border: 1px solid grey;
+  cursor: pointer;
   height: 100%;
   width: 20px;
   justify-content: flex-end;
   align-items: flex-end;
-  /* border: 2px solid rgb(99, 99, 99); */
 }
 .todos-map {
-  border: 2px solid rgb(99, 99, 99);
+  border: 1px solid grey;
+  font-weight: bold;
   width: 48%;
   height: 100%;
 }
-.div-project-todos {
-  border: 2px solid red;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
+
 .current-name {
-  height: 100px;
-  width: 300px;
+  border: 1px solid grey;
+  margin-top: 30px;
+  /* margin-left: -110px; */
+  margin-bottom: 20px;
+  width: 100%;
+  word-break: break-all;
+}
+.todos-map-div {
+  border: 1px solid grey;
+  margin-top: 15px;
 }
