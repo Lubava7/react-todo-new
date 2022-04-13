@@ -13,6 +13,11 @@ function App(toggleTask) {
   const [counter, setCounter] = React.useState(0);
   const [currentProject, setCurrentProject] = React.useState({});
 
+  React.useEffect(() => {
+    document.title = `${counter} new projects`;
+    // console.log("hello");
+  }, [counter]);
+
   function selectProject(project) {
     setCurrentProject(project);
   }
@@ -82,7 +87,7 @@ function App(toggleTask) {
     );
     copyProjects = projects.map((project) => {
       // console.log(project, copyCurrentProject);
-      if (copyCurrentProject.id == project.id) {
+      if (copyCurrentProject.id === project.id) {
         return copyCurrentProject;
       } else {
         return project;
@@ -121,7 +126,7 @@ function App(toggleTask) {
                 onClick={() => selectProject(project)}
               >
                 <div
-                  onClick={() => toggleTask(project.id)}
+                  // onClick={() => toggleTask(project.id)}
                   className="item-text"
                 >
                   {project.name}
@@ -162,7 +167,7 @@ function App(toggleTask) {
                   <div>
                     <div className="todos-map-div">
                       <div
-                        onClick={() => toggleTask(task.id)}
+                        // onClick={() => toggleTask(task.id)}
                         className="item-text"
                       >
                         {task.task}
