@@ -10,7 +10,7 @@ function App(toggleTask) {
   const [projects, setProjects] = React.useState([]);
   const [text, setText] = React.useState("");
   const [word, setWord] = React.useState("");
-  const [counter, setCounter] = React.useState([]);
+  const [counter, setCounter] = React.useState(0);
   const [currentProject, setCurrentProject] = React.useState({});
 
   function selectProject(project) {
@@ -71,7 +71,25 @@ function App(toggleTask) {
   }
   function removeTask(id) {
     setProjects([...projects.filter((project) => project.id !== id)]);
+    setCurrentProject({});
     setCounter(projects.length - 1);
+  }
+  function removeTaskTodo(jop) {
+    let copyCurrentProject = { ...currentProject };
+    let copyProjects = [...projects];
+    copyCurrentProject.tasks = currentProject.tasks.filter(
+      (task) => task.id !== jop
+    );
+    copyProjects = projects.map((project) => {
+      // console.log(project, copyCurrentProject);
+      if (copyCurrentProject.id == project.id) {
+        return copyCurrentProject;
+      } else {
+        return project;
+      }
+    });
+    setProjects(copyProjects);
+    setCurrentProject(copyCurrentProject);
   }
 
   return (
@@ -119,45 +137,51 @@ function App(toggleTask) {
           );
         })}
       </div>
-      <div className="todos-map">
-        <div className="current-name">{currentProject.name}</div>
-        <div>
-          <button className="button-add-icon">
-            <AddIcon
-              style={{ fontSize: "small" }}
-              onClick={() => addTask(word)}
-            />
-            <input
-              className="input"
-              value={word}
-              type="text"
-              onChange={handleChangeTodos}
-              onKeyDown={handleKeyPressTodos}
-              placeholder="add a task"
-            />
-          </button>
-          {currentProject.tasks.map((task) => {
-            return (
-              <div>
-                <div className="todos-map-div">
-                  <div
-                    onClick={() => toggleTask(task.id)}
-                    className="item-text"
-                  >
-                    {task.task}
+      {currentProject.name ? (
+        <div className="todos-map">
+          <div className="current-name">{currentProject.name}</div>
+          <div>
+            <button className="button-add-icon">
+              <AddIcon
+                style={{ fontSize: "small" }}
+                onClick={() => addTask(word)}
+              />
+              <input
+                className="input"
+                value={word}
+                type="text"
+                onChange={handleChangeTodos}
+                onKeyDown={handleKeyPressTodos}
+                placeholder="add a task"
+              />
+            </button>
 
-                    <div className="trash-check">
-                      <div className="item-delete">
-                        <DeleteIcon onClick={() => removeTask(task.id)} />
+            {currentProject.tasks &&
+              currentProject.tasks.map((task) => {
+                return (
+                  <div>
+                    <div className="todos-map-div">
+                      <div
+                        onClick={() => toggleTask(task.id)}
+                        className="item-text"
+                      >
+                        {task.task}
+
+                        <div className="trash-check">
+                          <div className="item-delete">
+                            <DeleteIcon
+                              onClick={() => removeTaskTodo(task.id)}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }
