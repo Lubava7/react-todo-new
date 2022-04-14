@@ -7,11 +7,6 @@ body {
   min-height: 100vh;
   font-family: "Source Sans Pro", sans-serif;
 }
-.TodoList {
-  border-right: 2px solid grey;
-  width: 40%;
-  height: 100vh;
-}
 .div-project-todos {
   height: 100%;
   width: 100%;
@@ -19,78 +14,100 @@ body {
   flex-direction: row;
   justify-content: space-around;
 }
-
+.TodoList {
+  border-right: 2px solid grey;
+  width: 80%;
+  margin-left: 4%;
+  padding-right: 2%;
+  height: 100vh;
+}
 .item-text {
-  border: 1px solid grey;
+  /* border: 1px solid grey;  */
   display: flex;
   width: 100%;
   height: 100%;
   word-break: break-all;
+  margin-top: 7px;
+}
+
+.project-map {
+  border: 1px solid rgb(222, 222, 222);
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
 }
-.trash-check {
-  border: 1px solid grey;
-  display: flex;
-  width: 100%;
+.item-delete {
+  /* border: 1px solid grey; */
   height: 100%;
-  justify-content: flex-end;
-  text-align: end;
-  align-items: flex-end;
+  width: 70px;
+  padding-top: 5px;
+  padding-right: 2px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.checkicon {
+  cursor: pointer;
+}
+.trashtank {
+  margin-top: 4px;
+  cursor: pointer;
+}
+.trashtank-project {
+  margin-top: 4px;
+  margin-right: 4px;
+  cursor: pointer;
 }
 .counter {
-  border: 1px solid grey;
-  margin-bottom: 10px;
+  /* border: 1px solid grey; */
+  margin-bottom: 20px;
   margin-top: 10px;
 }
 .div-under-counter {
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   margin-bottom: 10px;
 }
 .input {
   border-radius: 20px;
   text-align: center;
   cursor: pointer;
-  width: 140px;
+  width: 130px;
 }
 .input-todos {
   border-radius: 20px;
   text-align: center;
   cursor: pointer;
-  width: 140px;
+  width: 130px;
 }
-.project-map {
-  border: 1px solid grey;
-  cursor: pointer;
-  height: 100%;
-  width: 80%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-.item-delete {
-  border: 1px solid grey;
-  cursor: pointer;
-  height: 100%;
-  width: 20px;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
+
 .todos-map {
-  border: 1px solid grey;
+  /* border: 1px solid rgb(255, 195, 195); */
   font-weight: bold;
-  width: 48%;
+  width: 100%;
   height: 100%;
+  margin-left: 4%;
+  margin-right: 2%;
+  margin-top: 20px;
 }
 
 .current-name {
-  border: 1px solid grey;
+  /* border: 1px solid rgb(146, 67, 67); */
   margin-top: 30px;
-  /* margin-left: -110px; */
   margin-bottom: 20px;
   width: 100%;
   word-break: break-all;
 }
+.breadcrumbs {
+  color: grey;
+}
 .todos-map-div {
-  border: 1px solid grey;
+  border: 1px solid rgb(222, 222, 222);
   margin-top: 15px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { FaTrashAlt } from "react-icons/fa";
+import CheckIcon from "@mui/icons-material/Check";
 
 function randomId() {
   return Math.random().toString(36).substring(2, 9);
@@ -102,11 +103,6 @@ function App(toggleTask) {
         <div className="counter">Amount of projects : {counter}</div>
         <div className="div-under-counter">Add a new Project:</div>
 
-        {/* <button className="button-add-icon"> */}
-        {/* <AddIcon
-            style={{ fontSize: "small" }}
-            onClick={() => addProjects(text)}
-          /> */}
         <input
           className="input"
           value={text}
@@ -115,7 +111,6 @@ function App(toggleTask) {
           onKeyDown={handleKeyPress}
           placeholder="create a project"
         />
-        {/* </button> */}
 
         {projects.map((project) => {
           return (
@@ -129,11 +124,10 @@ function App(toggleTask) {
                   className="item-text"
                 >
                   {project.name}
-
-                  <div className="trash-check">
-                    <div className="item-delete">
-                      <FaTrashAlt onClick={() => removeTask(project.id)} />
-                    </div>
+                </div>
+                <div className="item-delete">
+                  <div className="trashtank-project">
+                    <FaTrashAlt onClick={() => removeTask(project.id)} />
                   </div>
                 </div>
               </div>
@@ -143,13 +137,9 @@ function App(toggleTask) {
       </div>
       {currentProject.name ? (
         <div className="todos-map">
+          <div className="breadcrumbs">Projects / {currentProject.name}</div>
           <div className="current-name">{currentProject.name}</div>
           <div>
-            {/* <button className="button-add-icon-todos"> */}
-            {/* <AddIcon
-                style={{ fontSize: "small" }}
-                onClick={() => addTask(word)}
-              /> */}
             <input
               className="input-todos"
               value={word}
@@ -158,7 +148,6 @@ function App(toggleTask) {
               onKeyDown={handleKeyPressTodos}
               placeholder="add a task"
             />
-            {/* </button> */}
 
             {currentProject.tasks &&
               currentProject.tasks.map((task) => {
@@ -170,13 +159,13 @@ function App(toggleTask) {
                         className="item-text"
                       >
                         {task.task}
-
-                        <div className="trash-check">
-                          <div className="item-delete">
-                            <FaTrashAlt
-                              onClick={() => removeTaskTodo(task.id)}
-                            />
-                          </div>
+                      </div>
+                      <div className="item-delete">
+                        <div className="checkicon">
+                          <CheckIcon />
+                        </div>
+                        <div className="trashtank">
+                          <FaTrashAlt onClick={() => removeTaskTodo(task.id)} />
                         </div>
                       </div>
                     </div>
