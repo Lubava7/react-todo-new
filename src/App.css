@@ -19,9 +19,9 @@ body {
 .TodoList {
   border-right: 2px solid grey;
   /* width: 80%; */
-  width: 411px;
-  margin-left: 4%;
-  padding-right: 4%;
+  width: 49%;
+  /* margin-left: 4%; */
+  padding-right: 9%;
   height: 100vh;
 }
 .item-text {
@@ -90,7 +90,7 @@ body {
   /* border: 1px solid rgb(255, 195, 195); */
   font-weight: bold;
   /* width: 100%; */
-  width: 1029px;
+  width: 49%;
   height: 100%;
   margin-left: 4%;
   margin-right: 2%;
