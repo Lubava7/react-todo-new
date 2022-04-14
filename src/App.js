@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import { FaTrashAlt } from "react-icons/fa";
 import CheckIcon from "@mui/icons-material/Check";
+import { AiOutlinePlusSquare } from "react-icons/ai";
+import { BsPersonCircle } from "react-icons/bs";
 
 function randomId() {
   return Math.random().toString(36).substring(2, 9);
@@ -100,8 +102,9 @@ function App(toggleTask) {
   return (
     <div className="div-project-todos">
       <div className="TodoList">
+        <div className="div-todo-description">ToDo.</div>
         <div className="counter">Amount of projects : {counter}</div>
-        <div className="div-under-counter">Add a new Project:</div>
+        <div className="div-under-counter">Projects</div>
 
         <input
           className="input"
@@ -111,6 +114,12 @@ function App(toggleTask) {
           onKeyDown={handleKeyPress}
           placeholder="create a project"
         />
+
+        <div className="fake-user-div-bottom">
+          <div className="title-fake-sms" data-title="it`s fake , sorry">
+            <BsPersonCircle className="fake-user" />
+          </div>
+        </div>
 
         {projects.map((project) => {
           return (
@@ -137,7 +146,19 @@ function App(toggleTask) {
       </div>
       {currentProject.name ? (
         <div className="todos-map">
-          <div className="breadcrumbs">Projects / {currentProject.name}</div>
+          <div className="plus-name">
+            <div className="breadcrumbs">Projects / {currentProject.name}</div>
+
+            <div className="top-user-plus-150px">
+              <div
+                className="title-fake-sms-top"
+                data-title="it`s fake , sorry"
+              >
+                <AiOutlinePlusSquare className="square" />
+                <BsPersonCircle className="fake-user-top" />
+              </div>
+            </div>
+          </div>
           <div className="current-name">{currentProject.name}</div>
           <div>
             <input
@@ -161,8 +182,13 @@ function App(toggleTask) {
                         {task.task}
                       </div>
                       <div className="item-delete">
-                        <div className="checkicon">
-                          <CheckIcon />
+                        <div
+                          className="title-fake-sms-top"
+                          data-title="it`s fake , sorry"
+                        >
+                          <div className="checkicon">
+                            <CheckIcon />
+                          </div>
                         </div>
                         <div className="trashtank">
                           <FaTrashAlt onClick={() => removeTaskTodo(task.id)} />
@@ -174,7 +200,22 @@ function App(toggleTask) {
               })}
           </div>
         </div>
-      ) : null}
+      ) : (
+        // <div className="start-screen  ">
+        //   <div>Let`s start !</div>
+        //   <div>
+        //     <AiOutlinePlusSquare className="square" />
+        //     <BsPersonCircle className="fake-user" />
+        //   </div>
+        // </div>
+        <div className="todos-map">
+          <div>
+            <AiOutlinePlusSquare className="square" />
+            <BsPersonCircle className="fake-user" />
+          </div>
+          <div className="current-name">Let`s start !</div>
+        </div>
+      )}
     </div>
   );
 }

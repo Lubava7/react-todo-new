@@ -10,15 +10,18 @@ body {
 .div-project-todos {
   height: 100%;
   width: 100%;
+  /* width: 411px; */
+  padding-left: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 .TodoList {
   border-right: 2px solid grey;
-  width: 80%;
+  /* width: 80%; */
+  width: 411px;
   margin-left: 4%;
-  padding-right: 2%;
+  padding-right: 4%;
   height: 100vh;
 }
 .item-text {
@@ -86,7 +89,8 @@ body {
 .todos-map {
   /* border: 1px solid rgb(255, 195, 195); */
   font-weight: bold;
-  width: 100%;
+  /* width: 100%; */
+  width: 1029px;
   height: 100%;
   margin-left: 4%;
   margin-right: 2%;
@@ -110,4 +114,65 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+.plus-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.square {
+  padding-right: 10px;
+  cursor: pointer;
+}
+.fake-user {
+  padding-right: 5px;
+  width: 150px;
+  cursor: pointer;
+}
+.fake-user-top {
+  padding-right: 10px;
+  cursor: pointer;
+}
+.fake-user-div-bottom {
+  margin-top: 430px;
+  left: 0;
+  position: absolute;
+}
+.top-user-plus-150px {
+  display: flex;
+  justify-content: flex-end;
+}
+.start-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.title-fake-sms:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  z-index: 1;
+  color: black;
+  background: rgba(255, 255, 230, 0.9);
+  border: 1px solid #333;
+}
+.title-fake-sms {
+  display: inline-block;
+  position: relative;
+}
+.title-fake-sms-top:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  right: 20px;
+  width: 100px;
+  top: 20px;
+  z-index: 3;
+  background: rgba(255, 255, 230, 0.9);
+  border: 1px solid #333;
+}
+.title-fake-sms-top {
+  display: inline-block;
+  position: relative;
 }
