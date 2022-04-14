@@ -201,20 +201,18 @@ function App(toggleTask) {
           </div>
         </div>
       ) : (
-        // <div className="start-screen  ">
-        //   <div>Let`s start !</div>
-        //   <div>
-        //     <AiOutlinePlusSquare className="square" />
-        //     <BsPersonCircle className="fake-user" />
-        //   </div>
-        // </div>
-        <div className="todos-map">
-          <div>
-            <AiOutlinePlusSquare className="square" />
-            <BsPersonCircle className="fake-user" />
-          </div>
+       
+        <div className="top-user-plus-150px-null">
+              <div
+                className="title-fake-sms-top"
+                data-title="it`s fake , sorry"
+              >
+                <AiOutlinePlusSquare className="square" />
+                <BsPersonCircle className="fake-user-top" />
+              </div>
+              
           <div className="current-name">Let`s start !</div>
-        </div>
+          </div>
       )}
     </div>
   );

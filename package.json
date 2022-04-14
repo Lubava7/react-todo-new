@@ -1,7 +1,7 @@
 {
   "name": "react-todo-new",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://lubava7.github.io/react-todo-new/",
   "dependencies": {
     "@emotion/react": "^11.8.2",
