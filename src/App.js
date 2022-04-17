@@ -5,24 +5,47 @@ import CheckIcon from "@mui/icons-material/Check";
 import { AiOutlinePlusSquare } from "react-icons/ai";
 import { BsPersonCircle } from "react-icons/bs";
 
+const getDataFromLS = () => {
+  const data = localStorage.getItem("projects");
+  if (data) {
+    return JSON.parse(data);
+  } else {
+    return [];
+  }
+};
+const getDataFromLSCP = () => {
+  const dataCP = localStorage.getItem("currentProject");
+  if (dataCP) {
+    return JSON.parse(dataCP);
+  } else {
+    return {};
+  }
+};
+
 function randomId() {
   return Math.random().toString(36).substring(2, 9);
 }
-function App(toggleTask) {
-  const [projects, setProjects] = React.useState([]);
+function App() {
+  const [projects, setProjects] = React.useState(getDataFromLS());
   const [text, setText] = React.useState("");
   const [word, setWord] = React.useState("");
-  const [counter, setCounter] = React.useState(0);
-  const [currentProject, setCurrentProject] = React.useState({});
+  const [counter, setCounter] = React.useState(projects.length);
+  const [currentProject, setCurrentProject] = React.useState(getDataFromLSCP());
 
   React.useEffect(() => {
     document.title = `${counter} new projects`;
-    // console.log("hello");
   }, [counter]);
+  React.useEffect(() => {
+    localStorage.setItem("projects", JSON.stringify(projects));
+  }, [projects]);
+  React.useEffect(() => {
+    localStorage.setItem("currentProject", JSON.stringify(currentProject));
+  }, [currentProject]);
 
   function selectProject(project) {
     setCurrentProject(project);
   }
+
   function addTask(word) {
     if (word) {
       const newProject = { ...currentProject };
@@ -201,18 +224,14 @@ function App(toggleTask) {
           </div>
         </div>
       ) : (
-       
         <div className="top-user-plus-150px-null">
-              <div
-                className="title-fake-sms-top"
-                data-title="it`s fake , sorry"
-              >
-                <AiOutlinePlusSquare className="square" />
-                <BsPersonCircle className="fake-user-top" />
-              </div>
-              
-          <div className="current-name">Let`s start !</div>
+          <div className="title-fake-sms-top" data-title="it`s fake , sorry">
+            <AiOutlinePlusSquare className="square" />
+            <BsPersonCircle className="fake-user-top" />
           </div>
+
+          <div className="current-name">Let`s start !</div>
+        </div>
       )}
     </div>
   );
